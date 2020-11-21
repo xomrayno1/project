@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="layouts :: header">
+  
+</head>
+<body>
+
+<nav th:replace="layouts :: navbar"/>
+	
+	<div class="container">
+		 <h3>Projects Directory</h3>
+		 <hr>
+		 <a th:href="@{/projects/new}" class="btn btn-info">New Project</a>
+		 <br>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th> Project Stage</th>
+					<th> Project Name</th>
+					<th> Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="aProject : ${projects}">
+					<td th:text=${aProject.name}/>
+					<td th:text=${aProject.stage}/>
+					<th>
+						<a th:href="@{/projects/update(id=${aProject.projectId})}" 
+						class="btn btn-info">Update</a>
+						<a th:href="@{/projects/delete(id=${aProject.projectId})}"
+						class="btn btn-danger">Delete</a>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+		 
+	</div>
+</body>
+</html>

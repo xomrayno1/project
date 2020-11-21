@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="layouts :: header">
+  
+</head>
+<body>
+	<nav th:replace="layouts :: navbar"/>
+
+	<div class="container">
+		<form action="/employees/save" th:object="${formData}" method="POST">
+			<div class="form-group row">
+				 <input type="hidden" th:field="*{employeeId}">
+				 <input type="text" placeholder="First Name" th:field="${formData.firstName}">
+				 <span th:if="${#fields.hasErrors('firstName')}"
+				 	th:errors="${formData.firstName}">
+				 </span>
+			</div>
+			 <div class="form-group row">
+			 	<input type="text" placeholder="Last Name" th:field="${formData.lastName}">
+			 	<span th:if="${#fields.hasErrors('lastName')}"
+				 	th:errors="${formData.lastName}">
+				 </span>
+			 </div>
+			 <div class="form-group row">
+			 	<input type="text" placeholder="Email" th:field="${formData.email}">
+			 </div>
+			<button type="submit">Save</button>
+		</form>
+	</div>
+</body>
+</html>

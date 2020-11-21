@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="layouts :: header">
+  
+</head>
+<body>
+
+<nav th:replace="layouts :: navbar"/>
+	
+	<div class="container">
+		 
+		<h3>Employees Directory</h3>
+		 <hr>
+		<a th:href="@{/employees/new}" class="btn btn-info">New Employee</a>
+		 <br>
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th> First Name</th>
+					<th> Last Name</th>
+					<th> Email</th>
+					<th> Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="aEmployee : ${employees}">
+					<td th:text=${aEmployee.firstName}/>
+					<td th:text=${aEmployee.lastName}/>
+					<td th:text=${aEmployee.email}/>
+					<td>
+						<a th:href="@{/employees/update(id=${aEmployee.employeeId})}" 
+							class="btn btn-info"> Update</a>
+						<a  th:href="@{/employees/delete(id=${aEmployee.employeeId})}"
+							class="btn btn-danger"> Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+		  
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="layouts :: header">
+  
+</head>
+<body>
+
+<nav th:replace="layouts :: navbar"/>
+	<div class="container">
+		<h3>Main Dashbroad</h3>
+		<a th:text="${version}"></a>
+		<hr>
+		 <h3>Projects Directory</h3>
+		 <hr>
+		<div class="row">
+			<div class="col-md-6">
+				 
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th> Project Stage</th>
+							<th> Project Name</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="aProject : ${projects}">
+							<td th:text=${aProject.name}/>
+							<td th:text=${aProject.stage}/>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="col-md-6">
+	 			<canvas id="myPieChart"	height="50"	 width="50"> </canvas>
+	 				
+	 				<script>
+	 					var chartData = "[[${projectStatusCnt}]]";
+	 				</script>	
+	 					
+	 		
+	 		</div>
+		</div>
+	 	
+	 	<div class="row">
+	 		<div class="col-md-6">
+	 			<h3>Employees Directory</h3>
+		 		<hr>
+				 
+				<table class="table table-bordered table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th> First Name</th>
+							<th> Last Name</th>
+							<th> Project Count</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="aEmployeeProductCnt : ${employeeListProjectCnt}">
+							<td th:text=${aEmployeeProductCnt.firstName}/>
+							<td th:text=${aEmployeeProductCnt.lastName}/>
+							<td th:text=${aEmployeeProductCnt.projectCount}/>
+						</tr>
+					</tbody>
+				</table>
+	 		</div>
+	 	</div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/myChart.js}"></script>
+	
+</body>
+</html>
